@@ -21,7 +21,16 @@ XLSX_FILE = None
 # Serve o HTML do dashboard
 @app.route('/')
 def index():
-    return render_template('index.html')
+    preview_table = None
+    # Se existir um CSV normalizado, gera preview das primeiras linhas
+    global CSV_FILE
+    if CSV_FILE and os.path.exists(CSV_FILE):
+        try:
+            df_preview = pd.read_csv(CSV_FILE, sep=';', encoding='cp1252')
+            preview_table = df_preview.head(10)
+        except Exception:
+            preview_table = None
+    return render_template('index.html', preview_table=preview_table)
 
 # Upload e processamento automático
 @app.route('/upload', methods=['POST'])

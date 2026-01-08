@@ -6,77 +6,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      background: #f4f6fb;
+      background: #e9ecf3;
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
     }
     .painel {
       background: #fff;
-      max-width: 420px;
-      margin: 40px auto 0 auto;
-      border-radius: 12px;
-      box-shadow: 0 2px 16px #0001;
-      padding: 32px 28px 24px 28px;
+      max-width: 600px;
+      margin: 48px auto 0 auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px #0002;
+      padding: 38px 36px 28px 36px;
       text-align: center;
     }
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 18px;
-      color: #2d3a4a;
+      color: #1a2330;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
     label {
       font-weight: 500;
-      color: #2d3a4a;
+      color: #1a2330;
+      font-size: 1.08rem;
     }
     input[type="file"] {
       margin: 12px 0 18px 0;
       display: block;
       width: 100%;
+      font-size: 1rem;
     }
     button {
-      background: #3b82f6;
+      background: #2563eb;
       color: #fff;
       border: none;
       border-radius: 6px;
-      padding: 10px 22px;
-      font-size: 1rem;
+      padding: 12px 28px;
+      font-size: 1.08rem;
       cursor: pointer;
       margin-bottom: 10px;
+      font-weight: 600;
       transition: background 0.2s;
+      box-shadow: 0 2px 8px #2563eb22;
     }
     button:hover {
-      background: #2563eb;
+      background: #1746a0;
     }
     .msg-sucesso {
-      background: #d1fae5;
-      color: #065f46;
-      padding: 12px 10px;
+      background: #e6f4ea;
+      color: #1a7f4e;
+      padding: 14px 12px;
       border-radius: 6px;
-      margin: 18px 0 10px 0;
-      font-size: 1.05rem;
+      margin: 22px 0 18px 0;
+      font-size: 1.08rem;
       border: 1px solid #10b98133;
+      font-weight: 500;
     }
     .links {
-      margin-top: 22px;
+      margin-top: 28px;
     }
     .links a {
       display: block;
-      margin: 10px 0;
+      margin: 12px 0;
       color: #2563eb;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 1.08rem;
+      font-size: 1.12rem;
       transition: color 0.2s;
     }
     .links a:hover {
-      color: #1e40af;
+      color: #1746a0;
       text-decoration: underline;
     }
-    @media (max-width: 600px) {
+    .preview-table {
+      margin: 28px auto 0 auto;
+      border-collapse: collapse;
+      width: 100%;
+      background: #f8fafc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px #0001;
+    }
+    .preview-table th, .preview-table td {
+      border: 1px solid #e2e8f0;
+      padding: 7px 10px;
+      font-size: 0.98rem;
+      color: #1a2330;
+      text-align: left;
+    }
+    .preview-table th {
+      background: #e9ecf3;
+      font-weight: 700;
+    }
+    .preview-title {
+      margin-top: 32px;
+      font-size: 1.12rem;
+      color: #1a2330;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    @media (max-width: 700px) {
       .painel {
-        max-width: 98vw;
-        padding: 18px 4vw 16px 4vw;
+        max-width: 99vw;
+        padding: 18px 2vw 16px 2vw;
       }
       h1 {
         font-size: 1.3rem;
@@ -102,6 +136,29 @@
       {% endif %}
     {% endwith %}
 
+    {% if preview_table %}
+      <div class="preview-title">Pré-visualização da planilha normalizada</div>
+      <div style="overflow-x:auto;">
+        <table class="preview-table">
+          <thead>
+            <tr>
+              {% for col in preview_table.columns %}
+                <th>{{ col }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in preview_table.values %}
+              <tr>
+                {% for cell in row %}
+                  <td>{{ cell }}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
     <div class="links">
       <a href="/csv" target="_blank">Baixar CSV Normalizado</a>
       <a href="/xlsx" target="_blank">Baixar Excel Normalizado (.xlsx)</a>
