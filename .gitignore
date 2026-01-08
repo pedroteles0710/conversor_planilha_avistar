@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# System
+Thumbs.db
+
+# Logs
+*.log
+
+# IDEs
+.idea/
+*.iml
+
+# Test/coverage
+htmlcov/
+.tox/
+.coverage
+.cache
+.pytest_cache/
+
+# Others
+*.sqlite3
+*.db
+*.pkl
+*.bak
+*.swp
