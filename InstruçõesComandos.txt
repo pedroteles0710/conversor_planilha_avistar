@@ -1,0 +1,23 @@
+	Antes de Rodar o script é preciso a planilha ser renomeada para 
+planilha_origem.csv 
+ou 
+planilha_origem.xlsx
+
+e ser colocada dentro da pasta (SOLUCAO)
+
+-------------------------------------------------------------------------------------
+Abra dentro da pasta SOLUCÃO o powershell(CMD), clique com botão direito e seleciona "Abrir no Terminal".
+
+comando numero 01, é comando para planilha em formato (xlsx)
+comando numero 02, é comando para planilha em formato (csv)
+
+01 - python normalizar_planilha.py 
+02 - python normalizar_planilha2.py
+
+	APÓS - será gerado uma nova planilha no formato desejado 
+planilha normalizada.csv
+ou
+planilha normalizada.xlsx
+
+
+00 - cd "C:\?\?\?\?\SOLUCAO" (Não enviar esse comando, consultar o desenvolvedor)

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Planilhas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #f4f6fb;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .painel {
+      background: #fff;
+      max-width: 420px;
+      margin: 40px auto 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px #0001;
+      padding: 32px 28px 24px 28px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      color: #2d3a4a;
+    }
+    label {
+      font-weight: 500;
+      color: #2d3a4a;
+    }
+    input[type="file"] {
+      margin: 12px 0 18px 0;
+      display: block;
+      width: 100%;
+    }
+    button {
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .msg-sucesso {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 12px 10px;
+      border-radius: 6px;
+      margin: 18px 0 10px 0;
+      font-size: 1.05rem;
+      border: 1px solid #10b98133;
+    }
+    .links {
+      margin-top: 22px;
+    }
+    .links a {
+      display: block;
+      margin: 10px 0;
+      color: #2563eb;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1.08rem;
+      transition: color 0.2s;
+    }
+    .links a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .painel {
+        max-width: 98vw;
+        padding: 18px 4vw 16px 4vw;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="painel">
+    <h1>Conversor de Planilhas</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="file">Selecione a planilha bruta (.csv):</label>
+      <input type="file" id="file" name="file" accept=".csv" required>
+      <button type="submit">Enviar e Normalizar</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="msg-sucesso">
+          <b>{{ messages[0] }}</b><br>
+          Agora você pode baixar o arquivo normalizado abaixo.
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="links">
+      <a href="/csv" target="_blank">Baixar CSV Normalizado</a>
+      <a href="/xlsx" target="_blank">Baixar Excel Normalizado (.xlsx)</a>
+      <a href="/json" target="_blank">Ver dados em JSON</a>
+    </div>
+  </div>
+</body>
+</html>
